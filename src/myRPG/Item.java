@@ -1,13 +1,15 @@
 package myRPG;
 
-public class Item 
+import java.io.Serializable;
+
+public class Item implements Serializable
 {
 	private String name;
 	private double weight;
 	private int xPosOfItem;
 	private int yPosOfItem;
 	
-	public Item (String n, double w,  int x, int y)
+	public Item (String n, double w,  int x, int y) 
 	{
 		name = n;
 		weight = w;	

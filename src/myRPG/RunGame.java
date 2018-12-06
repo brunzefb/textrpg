@@ -12,11 +12,9 @@ import java.io.ObjectOutputStream;
 
 public class RunGame 
 {
-	public static void main (String [] args)  throws IOException
+	public static void main (String [] args)  throws IOException, ClassNotFoundException
 	{
 		Scanner sc = new Scanner (System.in);
-		//FileOutputStream fout = new FileOutputStream("save.ser");
-		//ObjectOutputStream oos = new ObjectOutputStream(fout);
 		boolean keyToCastleFound = false;
 		boolean henchmanKilled = false;
 		boolean mrQinKilled = false;
@@ -27,14 +25,15 @@ public class RunGame
 		boolean healthPotionThreePickedUp = false;
 		boolean healthPotionFourPickedUp = false;
 		boolean healthPotionFivePickedUp = false;
+		ArrayList <Item> healthPotions = new ArrayList<Item>();
 		boolean daggerPickedUp = false;
 		boolean swordPickedUp = false;
 		boolean longswordPickedUp = false;
 		MapOfGame map = new MapOfGame();
-        printStory();
+		map.initializeArray();
+		System.out.println("What is your name hero?");
         String heroName = sc.nextLine();
         Hero user = new Hero (heroName);
-        printInstructions();
         Inventory inventory = new Inventory (200);
         Encounter spawnItem = new Encounter ();
         Item keyToCastle = new Item ("Key", 5.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation());
@@ -55,7 +54,34 @@ public class RunGame
         Enemy Henchman = new Enemy ("Henchman," , 8 , spawnItem.getRandomLocation(), spawnItem.getRandomLocation(), 100);
         Enemy mrQin = new Enemy ("Mr Qin", 10, spawnItem.getRandomLocation(), spawnItem.getRandomLocation(), 100);
         Enemy extremelyGayChris = new Enemy ("Really Happy Chris", 15, spawnItem.getRandomLocation(), spawnItem.getRandomLocation(), 100);
-        map.initializeArray();
+        Enemy mrLu = new Enemy ("Mr Lu", 25, 5 , 8 , 200);
+		Scanner temp = new Scanner (System.in);
+		System.out.println("Do you have a saved game? (yes) / (no)");
+		String response = temp.nextLine();
+		if (response.equalsIgnoreCase("yes")==true)
+		{	
+        	FileInputStream fin = new FileInputStream("save.ser");   
+			ObjectInputStream ios = new ObjectInputStream(fin);
+			inventory = (Inventory)ios.readObject();
+			user = (Hero)ios.readObject();
+			map = (MapOfGame)ios.readObject();
+			healthPotions = (ArrayList<Item>)ios.readObject();
+			Dagger = (Weapon)ios.readObject();
+			Sword = (Weapon)ios.readObject();
+			Longsword = (Weapon)ios.readObject();
+			feralCrystal = (Enemy)ios.readObject();
+			Henchman = (Enemy)ios.readObject();
+			extremelyGayChris = (Enemy)ios.readObject();
+			mrQin = (Enemy)ios.readObject();
+			fin.close();
+		}
+		
+		else if (response.equalsIgnoreCase("no")==true)
+		{
+			  printStory();
+			  printInstructions();
+		}
+
         while (user.getHp() > 0)
         {
           	map.printMap();
@@ -193,6 +219,7 @@ public class RunGame
     				System.out.println("");
     				System.out.println("You got killed by a henchman? Wow you suck.");
     				System.out.println("Gameover!");
+    				System.exit(0);
     			}
         	}
         	
@@ -271,6 +298,7 @@ public class RunGame
     				System.out.println("You got killed by the feral Crystal?");
     				System.out.println("Man... she's probably gonna eat your body that sucks.");
     				System.out.println("Gameover!");
+    				System.exit(0);
     			}
         	}
         	
@@ -349,6 +377,7 @@ public class RunGame
     				System.out.println("You got killed by Really Gay Chris");
     				System.out.println("He says that your body looks scrumptious");
     				System.out.println("Gameover!");
+    				System.exit(0);
     			}
         	}
         	
@@ -361,6 +390,9 @@ public class RunGame
         		System.out.println("Which weapon would you like to use");
         		System.out.println("----------------------------------");
         		System.out.println("You have these weapons at your disposal");
+        		System.out.println("");
+        		System.out.println("If you see no weapons availible hit enter to engage with default damage.");
+        		System.out.println("");
         		inventory.printWeapons();
         		String choice = sc.nextLine();
         		int damage = inventory.damageForWeapon(choice);
@@ -426,6 +458,7 @@ public class RunGame
     				System.out.println("You got killed by Mr Qin?");
     				System.out.println("That's pretty understandable. but still...");
     				System.out.println("Gameover!");
+    				System.exit(0);
     			}
         	}
 
@@ -452,15 +485,13 @@ public class RunGame
         		else if (selection.equalsIgnoreCase("s")==true)
         		{
         			System.out.println("We're gonna save your game now.");
+        			System.out.println("");
         			FileOutputStream fout = new FileOutputStream("save.ser");
         			ObjectOutputStream oos = new ObjectOutputStream(fout);
+        			oos.writeObject(inventory);
         			oos.writeObject(user);
         			oos.writeObject(map);
-        			oos.writeObject(healthPotion);
-        			oos.writeObject(healthPotionTwo);
-        			oos.writeObject(healthPotionThree);
-        			oos.writeObject(healthPotionFour);
-        			oos.writeObject(healthPotionFive);
+        			oos.writeObject(healthPotions);
         			oos.writeObject(Dagger);
         			oos.writeObject(Sword);
         			oos.writeObject(Longsword);
@@ -491,7 +522,69 @@ public class RunGame
         		{
         			map.movePlayer(input);
         			System.out.println("YOU ENTERED MY CASTLE?!");
+        			System.out.println("YOUUUU HAVE MADE A GRAAAVVE MISTAKE COMING HERE");
+        			System.out.println("YOU THINK YOU CAN CHALLENGE ME?!?!");
         			System.out.println("");
+        			System.out.println("Which weapon would you like to use");
+            		System.out.println("----------------------------------");
+            		System.out.println("You have these weapons at your disposal");
+            		inventory.printWeapons();
+            		String choice = sc.nextLine();
+            		int damage = inventory.damageForWeapon(choice);
+            		if (damage == 0)
+            		{
+            			System.out.println("You don't have that weapon!");
+            			System.out.println("Your default damage is 10");
+            			System.out.println("");
+            			damage = 10;
+            		}
+        			while (user.getHp() > 0 && mrLu.getHp() > 0)
+        			{
+                		user.attack(mrLu, damage);
+        				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
+        				   try
+                		   {
+        					   TimeUnit.SECONDS.sleep(1);
+        				   } 
+                		   catch (InterruptedException e) 
+                		   {
+        					  e.printStackTrace();
+        				   }
+        				if (mrLu.getHp() <=0)
+        					break;
+        				mrLu.attack(user, damage);
+        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
+        				   try
+                		   {
+        					   TimeUnit.SECONDS.sleep(1);
+        				   } 
+                		   catch (InterruptedException e) 
+                		   {
+        					  e.printStackTrace();
+        				   }
+        				if (user.getHp()<=0)
+        					break;
+        				if (user.getHp() < 30 && inventory.hasItem("Health Potion") == true)
+        				{
+        					user.setHp(100);
+        					System.out.println("You used a health potion, your health has been restored to " + user.getHp() +" hp.");
+        					inventory.removeItemFromBag("Health Potion");
+        				}
+        			}
+        			if (mrLu.getHp()> user.getHp())
+        			{
+        				System.out.println("You got taken out by Mr Lu!");
+        				System.out.println("Did you even think you had a chance?");
+        				System.exit(0);
+        			}
+        			
+        			else 
+        			{
+        				System.out.println("Congratulations! You beat Mr Lu!");
+        				System.out.println("You have freed the people of Earth 2 from his tyranny");
+        				System.out.println("Thanks for playing!");
+        				System.exit(0);
+        			}
         		}
         		
         		else if (map.getX()==3 && map.getY() == 8 &&input.equalsIgnoreCase("e") == true &&keyToCastleFound == false)
@@ -512,7 +605,69 @@ public class RunGame
         		{
         			map.movePlayer(input);
         			System.out.println("YOU ENTERED MY CASTLE?!");
+        			System.out.println("YOUUUU HAVE MADE A GRAAAVVE MISTAKE COMING HERE");
+        			System.out.println("YOU THINK YOU CAN CHALLENGE ME?!?!");
         			System.out.println("");
+        			System.out.println("Which weapon would you like to use");
+            		System.out.println("----------------------------------");
+            		System.out.println("You have these weapons at your disposal");
+            		inventory.printWeapons();
+            		String choice = sc.nextLine();
+            		int damage = inventory.damageForWeapon(choice);
+            		if (damage == 0)
+            		{
+            			System.out.println("You don't have that weapon!");
+            			System.out.println("Your default damage is 10");
+            			System.out.println("");
+            			damage = 10;
+            		}
+        			while (user.getHp() > 0 && mrLu.getHp() > 0)
+        			{
+                		user.attack(mrLu, damage);
+        				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
+        				   try
+                		   {
+        					   TimeUnit.SECONDS.sleep(1);
+        				   } 
+                		   catch (InterruptedException e) 
+                		   {
+        					  e.printStackTrace();
+        				   }
+        				if (mrLu.getHp() <=0)
+        					break;
+        				mrLu.attack(user, damage);
+        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
+        				   try
+                		   {
+        					   TimeUnit.SECONDS.sleep(1);
+        				   } 
+                		   catch (InterruptedException e) 
+                		   {
+        					  e.printStackTrace();
+        				   }
+        				if (user.getHp()<=0)
+        					break;
+        				if (user.getHp() < 30 && inventory.hasItem("Health Potion") == true)
+        				{
+        					user.setHp(100);
+        					System.out.println("You used a health potion, your health has been restored to " + user.getHp() +" hp.");
+        					inventory.removeItemFromBag("Health Potion");
+        				}
+        				if (mrLu.getHp()> user.getHp())
+            			{
+            				System.out.println("You got taken out by Mr Lu!");
+            				System.out.println("Did you even think you had a chance?");
+            				System.exit(0);
+            			}
+            			
+            			else 
+            			{
+            				System.out.println("Congratulations! You beat Mr Lu!");
+            				System.out.println("You have freed the people of Earth 2 from his tyranny");
+            				System.out.println("Thanks for playing!");
+            				System.exit(0);
+            			}
+        			}
         		}
         		
         		else if (map.getX() == 5 && map.getY() == 8 && input.equalsIgnoreCase("w") == true && keyToCastleFound == false)
@@ -533,7 +688,71 @@ public class RunGame
         		{
         			map.movePlayer(input);
         			System.out.println("YOU ENTERED MY CASTLE?!");
+        			System.out.println("YOUUUU HAVE MADE A GRAAAVVE MISTAKE COMING HERE");
+        			System.out.println("YOU THINK YOU CAN CHALLENGE ME?!?!");
         			System.out.println("");
+        			System.out.println("Which weapon would you like to use");
+            		System.out.println("----------------------------------");
+            		System.out.println("You have these weapons at your disposal");
+            		inventory.printWeapons();
+            		String choice = sc.nextLine();
+            		int damage = inventory.damageForWeapon(choice);
+            		if (damage == 0)
+            		{
+            			System.out.println("You don't have that weapon!");
+            			System.out.println("Your default damage is 10");
+            			System.out.println("");
+            			damage = 10;
+            		}
+        			while (user.getHp() > 0 && mrLu.getHp() > 0)
+        			{
+        	
+                		user.attack(mrLu, damage);
+        				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
+        				   try
+                		   {
+        					   TimeUnit.SECONDS.sleep(1);
+        				   } 
+                		   catch (InterruptedException e) 
+                		   {
+        					  e.printStackTrace();
+        				   }
+        				if (mrLu.getHp() <=0)
+        					break;
+        				mrLu.attack(user, damage);
+        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
+        				   try
+                		   {
+        					   TimeUnit.SECONDS.sleep(1);
+        				   } 
+                		   catch (InterruptedException e) 
+                		   {
+        					  e.printStackTrace();
+        				   }
+        				if (user.getHp()<=0)
+        					break;
+        				if (user.getHp() < 30 && inventory.hasItem("Health Potion") == true)
+        				{
+        					user.setHp(100);
+        					System.out.println("You used a health potion, your health has been restored to " + user.getHp() +" hp.");
+        					inventory.removeItemFromBag("Health Potion");
+        				}
+        				if (mrLu.getHp()> user.getHp())
+            			{
+            				System.out.println("You got taken out by Mr Lu!");
+            				System.out.println("Did you even think you had a chance?");
+            				System.exit(0);
+            			}
+            			
+            			else 
+            			{
+            				System.out.println("Congratulations! You beat Mr Lu!");
+            				System.out.println("You have freed the people of Earth 2 from his tyranny");
+            				System.out.println("Thanks for playing!");
+            				System.exit(0);
+            			}
+                	
+        			}
         		}
         		
         		else 
@@ -542,22 +761,14 @@ public class RunGame
         }
 	}
 	
-	public static void printStory ()
+	public static void printStory () throws IOException
 	{
-		Scanner temp = new Scanner (System.in);
-		System.out.println("Do you have a saved game? (yes) / (no)");
-		String response = temp.nextLine();
-		if (response.equalsIgnoreCase("yes")==true)
-		{
-			
-		}
-		else
-		System.out.println("");
-		System.out.println("In a world known as Earth 2 Humanity is ruled over by one man.");
-		System.out.println("This man Vincent Lu has ruled over humanity with his henchmen for centuries.");
-		System.out.println("The people of Earth 2 have been far too afraid to challenge Lu due to his immense power.");
-		System.out.println("At least they had been, until now");
-		System.out.println("What is your name Hero?");
+			System.out.println("");
+			System.out.println("In a world known as Earth 2 Humanity is ruled over by one man.");
+			System.out.println("This man Vincent Lu has ruled over humanity with his henchmen for centuries.");
+			System.out.println("The people of Earth 2 have been far too afraid to challenge Lu due to his immense power.");
+			System.out.println("At least they had been, until now");
+			System.out.println("What is your name Hero?");
 	}
 	
 	public static void printInstructions ()
@@ -586,14 +797,6 @@ public class RunGame
 			System.out.println("Don't worry! you'll be fine! Probably...");
 			System.out.println("");
 		}	
-	}
-
-	
-	public static ArrayList loadItems ()
-	{
-		ArrayList <Item> itemsToBeLoaded = new ArrayList<Item>();
-		//itemsToBeLoaded.add(healthPotion);
-		return itemsToBeLoaded;
 	}
 }
 
