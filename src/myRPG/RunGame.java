@@ -177,8 +177,12 @@ public class RunGame
         		    {
 					  e.printStackTrace();
 				    }
+ 				    if (Henchman.getHp() < 0)
+ 				    {
+ 				    	Henchman.setHp(0);
+ 				    }
     				System.out.println("You attacked the henchman, his new health is " + Henchman.getHp());
-    				if (Henchman.getHp() <= 0)
+    				if (Henchman.getHp() == 0)
     					break;
     				Henchman.attack(user, damage);
  				    try
@@ -189,8 +193,12 @@ public class RunGame
         	 	    {
 					  e.printStackTrace();
 				    }
+ 				    if(user.getHp()<0)
+ 				    {
+ 				       Henchman.setHp(0);
+ 				    }
     				System.out.println("You were hit by the henchman, your new health is " + user.getHp());
-    				if (user.getHp() <= 0)
+    				if (user.getHp() == 0)
     					break;
     				if (user.getHp() < 30 && inventory.hasItem("Health Potion")==true)
     				{
@@ -254,9 +262,13 @@ public class RunGame
         		    catch (InterruptedException e) 
         		    {
 					  e.printStackTrace();
-				    }
+        		    }
+ 				    if (feralCrystal.getHp()<0)
+ 				    {
+ 				    	feralCrystal.setHp(0);
+ 				    }
     				System.out.println("You attacked the feral Crystal, her new health is " + feralCrystal.getHp());
-    				if (feralCrystal.getHp() <=0)
+    				if (feralCrystal.getHp() == 0)
     					break;
     				feralCrystal.attack(user, damage);
  				    try
@@ -267,8 +279,12 @@ public class RunGame
         		    {
 					  e.printStackTrace();
 				    }
+ 				    if (user.getHp() < 0)
+ 				    {
+ 				    	user.setHp(0);
+ 				    }
     				System.out.println("You were hit by the feral Crystal, your new health is " + user.getHp());
-    				if (user.getHp()<=0)
+    				if (user.getHp() < 0)
     					break;
     				if (user.getHp() < 30 && inventory.hasItem("Health Potion")==true)
     				{
@@ -334,8 +350,12 @@ public class RunGame
         		    {
 					  e.printStackTrace();
 				    }
+ 				    if (extremelyGayChris.getHp() < 0)
+ 				    {
+ 				    	extremelyGayChris.setHp(0);
+ 				    }
     				System.out.println("You attacked the Really Gay Chris, his new health is " + extremelyGayChris.getHp());
-    				if (extremelyGayChris.getHp() <= 0)
+    				if (extremelyGayChris.getHp() == 0)
     					break;
     				extremelyGayChris.attack(user, damage);
  				    try
@@ -346,8 +366,12 @@ public class RunGame
         		    {
 					  e.printStackTrace();
 				    }
+ 				    if (user.getHp() < 0)
+ 				    {
+ 				    	user.setHp(0);
+ 				    }
     				System.out.println("You were hit by the Really Gay Chris, your new health is " + user.getHp());
-    				if (user.getHp() <= 0)
+    				if (user.getHp() == 0)
     					break;
     				if (user.getHp() < 30 && inventory.hasItem("Health Potion")==true)
     				{
@@ -407,19 +431,23 @@ public class RunGame
     			while (mrQin.getHp() >= 0 && user.getHp() >= 0)
     			{
     				user.attack(mrQin, damage);
-    				System.out.println("You attacked the Mr Qin, his new health is " + mrQin.getHp());
-    				   try
-            		   {
-    					   TimeUnit.SECONDS.sleep(1);
-    				   } 
-            		   catch (InterruptedException e) 
-            		   {
+    				try
+            	    {
+    			      TimeUnit.SECONDS.sleep(1);
+    				} 
+            		catch (InterruptedException e) 
+            	    {
     					  e.printStackTrace();
-    				   }
-    				if (mrQin.getHp() <=0)
+    		        }
+    				   
+    				if(mrQin.getHp()<0)
+    				{
+    					mrQin.setHp(0);
+    				}
+    				System.out.println("You attacked the Mr Qin, his new health is " + mrQin.getHp());
+    				if (mrQin.getHp() ==0)
     					break;
     				mrQin.attack(user, damage);
-    				System.out.println("You were hit by the Mr Qin, your new health is " + user.getHp());
     				   try
             		   {
     					   TimeUnit.SECONDS.sleep(1);
@@ -428,7 +456,12 @@ public class RunGame
             		   {
     					  e.printStackTrace();
     				   }
-    				if (user.getHp()<=0)
+    				if (user.getHp()<0)
+    				{
+    					user.setHp(0);
+    				}
+    				System.out.println("You were hit by the Mr Qin, your new health is " + user.getHp());
+    				if (user.getHp()==0)
     					break;
     				if (user.getHp() < 30 && inventory.hasItem("Health Potion") == true)
     				{
@@ -541,7 +574,6 @@ public class RunGame
         			while (user.getHp() > 0 && mrLu.getHp() > 0)
         			{
                 		user.attack(mrLu, damage);
-        				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
         				   try
                 		   {
         					   TimeUnit.SECONDS.sleep(1);
@@ -550,10 +582,14 @@ public class RunGame
                 		   {
         					  e.printStackTrace();
         				   }
-        				if (mrLu.getHp() <=0)
+        				if (mrLu.getHp() < 0)
+        				{
+        					mrLu.setHp(0);
+        				}
+        				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
+        				if (mrLu.getHp() == 0)
         					break;
         				mrLu.attack(user, damage);
-        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
         				   try
                 		   {
         					   TimeUnit.SECONDS.sleep(1);
@@ -562,6 +598,11 @@ public class RunGame
                 		   {
         					  e.printStackTrace();
         				   }
+        				if (user.getHp()<0)
+        				{
+        					user.setHp(0);
+        				}
+        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
         				if (user.getHp()<=0)
         					break;
         				if (user.getHp() < 30 && inventory.hasItem("Health Potion") == true)
@@ -624,7 +665,6 @@ public class RunGame
         			while (user.getHp() > 0 && mrLu.getHp() > 0)
         			{
                 		user.attack(mrLu, damage);
-        				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
         				   try
                 		   {
         					   TimeUnit.SECONDS.sleep(1);
@@ -633,10 +673,14 @@ public class RunGame
                 		   {
         					  e.printStackTrace();
         				   }
-        				if (mrLu.getHp() <=0)
+        				if (mrLu.getHp() < 0)
+        				{
+        					mrLu.setHp(0);
+        				}
+        				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
+        				if (mrLu.getHp() == 0)
         					break;
         				mrLu.attack(user, damage);
-        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
         				   try
                 		   {
         					   TimeUnit.SECONDS.sleep(1);
@@ -645,7 +689,12 @@ public class RunGame
                 		   {
         					  e.printStackTrace();
         				   }
-        				if (user.getHp()<=0)
+        				if (user.getHp()<0)
+        				{
+        					user.setHp(0);
+        				}
+        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
+        				if (user.getHp() == 0)
         					break;
         				if (user.getHp() < 30 && inventory.hasItem("Health Potion") == true)
         				{
@@ -653,20 +702,19 @@ public class RunGame
         					System.out.println("You used a health potion, your health has been restored to " + user.getHp() +" hp.");
         					inventory.removeItemFromBag("Health Potion");
         				}
-        				if (mrLu.getHp()> user.getHp())
-            			{
-            				System.out.println("You got taken out by Mr Lu!");
-            				System.out.println("Did you even think you had a chance?");
-            				System.exit(0);
-            			}
-            			
-            			else 
-            			{
-            				System.out.println("Congratulations! You beat Mr Lu!");
-            				System.out.println("You have freed the people of Earth 2 from his tyranny");
-            				System.out.println("Thanks for playing!");
-            				System.exit(0);
-            			}
+        			}
+        			if (mrLu.getHp()> user.getHp())
+        			{
+        				System.out.println("You got taken out by Mr Lu!");
+        				System.out.println("Did you even think you had a chance?");
+        				System.exit(0);
+        			}
+        			else 
+        			{
+        				System.out.println("Congratulations! You beat Mr Lu!");
+        				System.out.println("You have freed the people of Earth 2 from his tyranny");
+        				System.out.println("Thanks for playing!");
+        				System.exit(0);
         			}
         		}
         		
@@ -696,7 +744,7 @@ public class RunGame
             		System.out.println("You have these weapons at your disposal");
             		inventory.printWeapons();
             		String choice = sc.nextLine();
-            		int damage = inventory.damageForWeapon(choice);
+            		int damage = inventory.damageForWeapon(choice);	
             		if (damage == 0)
             		{
             			System.out.println("You don't have that weapon!");
@@ -704,23 +752,29 @@ public class RunGame
             			System.out.println("");
             			damage = 10;
             		}
+            		
         			while (user.getHp() > 0 && mrLu.getHp() > 0)
         			{
         	
                 		user.attack(mrLu, damage);
+        				   try
+                		   {
+        					   TimeUnit.SECONDS.sleep(1);
+        				   } 
+                		   catch (InterruptedException e) 
+                		   {
+        					  e.printStackTrace();
+        				   }
+        				if (mrLu.getHp() < 0)
+        				{
+        					mrLu.setHp(0);
+        				}
         				System.out.println("You attacked the Mr Lu, his new health is " + mrLu.getHp());
-        				   try
-                		   {
-        					   TimeUnit.SECONDS.sleep(1);
-        				   } 
-                		   catch (InterruptedException e) 
-                		   {
-        					  e.printStackTrace();
-        				   }
-        				if (mrLu.getHp() <=0)
+       
+        				if (mrLu.getHp() == 0)
         					break;
+        				
         				mrLu.attack(user, damage);
-        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
         				   try
                 		   {
         					   TimeUnit.SECONDS.sleep(1);
@@ -729,29 +783,36 @@ public class RunGame
                 		   {
         					  e.printStackTrace();
         				   }
-        				if (user.getHp()<=0)
+        				   
+        				if (user.getHp()<0)
+        				{
+        					user.setHp(0);
+        				}
+        				System.out.println("You were hit by Mr Lu, your new health is " + user.getHp());
+        				if (user.getHp()==0)
         					break;
+        				
         				if (user.getHp() < 30 && inventory.hasItem("Health Potion") == true)
         				{
         					user.setHp(100);
         					System.out.println("You used a health potion, your health has been restored to " + user.getHp() +" hp.");
         					inventory.removeItemFromBag("Health Potion");
         				}
-        				if (mrLu.getHp()> user.getHp())
-            			{
-            				System.out.println("You got taken out by Mr Lu!");
-            				System.out.println("Did you even think you had a chance?");
-            				System.exit(0);
-            			}
-            			
-            			else 
-            			{
-            				System.out.println("Congratulations! You beat Mr Lu!");
-            				System.out.println("You have freed the people of Earth 2 from his tyranny");
-            				System.out.println("Thanks for playing!");
-            				System.exit(0);
-            			}
-                	
+        		
+        			}
+        			if (mrLu.getHp()> user.getHp())
+        			{
+        				System.out.println("You got taken out by Mr Lu!");
+        				System.out.println("Did you even think you had a chance?");
+        				System.exit(0);
+        			}
+        			
+        			else 
+        			{
+        				System.out.println("Congratulations! You beat Mr Lu!");
+        				System.out.println("You have freed the people of Earth 2 from his tyranny");
+        				System.out.println("Thanks for playing!");
+        				System.exit(0);
         			}
         		}
         		
