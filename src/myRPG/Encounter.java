@@ -13,7 +13,7 @@ public class Encounter
     }
 
     //Creates a random location from 1-9
-    //@return the random location generated
+    //@return randomLocation the random location generated
     public int getRandomLocation()
     {
         temp = Math.random() * 9;

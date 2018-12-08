@@ -10,9 +10,15 @@ public class Player implements Serializable
 
     //Constructor of the class (default values are assigned here)
     //@param n the name of the player
- 
+    public Player(String n)
+    {
+        name = n;
+        hp = 100;
+        maxHp = 100;
+    }
     //Overloaded constructor
-    //@param
+    //@param n name of the player
+    //@param h the hp of the player
     public Player(String n, int h)
     {
         name = n;

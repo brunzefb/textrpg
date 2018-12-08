@@ -36,12 +36,16 @@ public class RunGame
         {
             keyToCastle.setY(3);
         }
-        //add health potions to array list
         Item healthPotion = new Item("Health Potion", 10.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation());
         Item healthPotionTwo = new Item("Health Potion", 10.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation());
         Item healthPotionThree = new Item("Health Potion", 10.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation());
         Item healthPotionFour = new Item("Health Potion", 10.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation());
         Item healthPotionFive = new Item("Health Potion", 10.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation());
+        healthPotions.add(healthPotion);
+        healthPotions.add(healthPotionTwo);
+        healthPotions.add(healthPotionThree);
+        healthPotions.add(healthPotionFour);
+        healthPotions.add(healthPotionFive);
         Weapon Dagger = new Weapon("Dagger", 25.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation(), 15);
         Weapon Sword = new Weapon("Sword", 45.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation(), 24);
         Weapon Longsword = new Weapon("Long Sword", 65.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation(), 29);
@@ -53,6 +57,7 @@ public class RunGame
         Scanner temp = new Scanner(System.in);
         System.out.println("Do you have a saved game? (yes) / (no)");
         String response = temp.nextLine();
+        // loads the objects from serialized file
         if (response.equalsIgnoreCase("yes") == true)
         {
             FileInputStream fin = new FileInputStream("save.ser");
@@ -75,69 +80,69 @@ public class RunGame
             printStory();
             printInstructions();
         }
-
+        
         while (user.getHp() > 0)
         {
             map.printMap();
             map.getCurrentLocation();
             System.out.println("Which direction would you like to go?");
-
+            
             if (map.getX() + 1 == healthPotion.getX() && map.getY() + 1 == healthPotion.getY() && healthPotionOnePickedUp == false)
             {
-                System.out.println("You found a health potion!");
+                System.out.println("*You found a health potion!*");
                 inventory.addItemToBag(healthPotion);
                 healthPotionOnePickedUp = true;
             }
             if (map.getX() + 1 == healthPotionTwo.getX() && map.getY() + 1 == healthPotionTwo.getY() && healthPotionTwoPickedUp == false)
             {
-                System.out.println("You found a health potion!");
+                System.out.println("*You found a health potion!*");
                 inventory.addItemToBag(healthPotionTwo);
                 healthPotionTwoPickedUp = true;
             }
             if (map.getX() + 1 == healthPotionThree.getX() && map.getY() + 1 == healthPotionThree.getY() && healthPotionThreePickedUp == false)
             {
-                System.out.println("You found a health potion!");
+                System.out.println("*You found a health potion!*");
                 inventory.addItemToBag(healthPotionThree);
                 healthPotionOnePickedUp = true;
             }
             if (map.getX() + 1 == healthPotionFour.getX() && map.getY() + 1 == healthPotionFour.getY() && healthPotionFourPickedUp == false)
             {
-                System.out.println("You found a health potion!");
+                System.out.println("*You found a health potion!*");
                 inventory.addItemToBag(healthPotionFour);
                 healthPotionFourPickedUp = true;
             }
 
             if (map.getX() + 1 == healthPotionFive.getX() && map.getY() + 1 == healthPotionFive.getY() && healthPotionFivePickedUp == false)
             {
-                System.out.println("You found a health potion!");
+                System.out.println("*You found a health potion!*");
                 inventory.addItemToBag(healthPotionFive);
                 healthPotionFivePickedUp = true;
             }
 
             if (map.getX() + 1 == Dagger.getX() && map.getY() + 1 == Dagger.getY() && daggerPickedUp == false)
             {
-                System.out.println("You found a dagger!");
+                System.out.println("*You found a dagger!*");
                 inventory.addItemToBag(Dagger);
                 daggerPickedUp = true;
             }
 
             if (map.getX() + 1 == Sword.getX() && map.getY() + 1 == Sword.getY() && swordPickedUp == false)
             {
-                System.out.println("You found a Sword!");
+                System.out.println("*You found a Sword!*");
                 inventory.addItemToBag(Sword);
                 swordPickedUp = true;
             }
 
             if (map.getX() + 1 == Longsword.getX() && map.getY() + 1 == Longsword.getY() && longswordPickedUp == false)
             {
-                System.out.println("You found a Long Sword!");
+                System.out.println("*You found a Long Sword!*");
                 inventory.addItemToBag(Longsword);
                 longswordPickedUp = true;
             }
 
             if (map.getX() + 1 == keyToCastle.getX() && map.getY() + 1 == keyToCastle.getY() && keyToCastleFound == false)
             {
-                System.out.println("You found the key to Lu's Castle!");
+                System.out.println("*You found the key to Lu's Castle!*");
                 System.out.println("Now you can open the door to his castle and try to overthrow him as leader.");
                 inventory.addItemToBag(keyToCastle);
                 keyToCastleFound = true;
@@ -183,16 +188,7 @@ public class RunGame
             {
                 if (map.getX() == 4 && map.getY() == 7 && input.equalsIgnoreCase("s") == true && keyToCastleFound == false)
                 {
-                    System.out.println("You can't go there without the key!");
-                    System.out.println();
-                    try
-                    {
-                        TimeUnit.SECONDS.sleep(1);
-                    }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
+                   castleAcessDenied();
                 }
                 else if (map.getX() == 4 && map.getY() == 7 && input.equalsIgnoreCase("s") == true && keyToCastleFound == true)
                 {
@@ -200,16 +196,7 @@ public class RunGame
                 }
                 else if (map.getX() == 3 && map.getY() == 8 && input.equalsIgnoreCase("e") == true && keyToCastleFound == false)
                 {
-                    System.out.println("You can't go there without the key!");
-                    System.out.println();
-                    try
-                    {
-                        TimeUnit.SECONDS.sleep(1);
-                    }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
+                   castleAcessDenied();
                 }
                 else if (map.getX() == 3 && map.getY() == 8 && input.equalsIgnoreCase("e") == true && keyToCastleFound == true)
                 {
@@ -217,16 +204,7 @@ public class RunGame
                 }
                 else if (map.getX() == 5 && map.getY() == 8 && input.equalsIgnoreCase("w") == true && keyToCastleFound == false)
                 {
-                    System.out.println("You can't go there without the key!");
-                    System.out.println();
-                    try
-                    {
-                        TimeUnit.SECONDS.sleep(1);
-                    }
-                    catch (InterruptedException e)
-                    {
-                        e.printStackTrace();
-                    }
+                	 castleAcessDenied();
                 }
                 else if (map.getX() == 5 && map.getY() == 8 && input.equalsIgnoreCase("w") == true && keyToCastleFound == true)
                 {
@@ -239,7 +217,14 @@ public class RunGame
             }
         }
     }
-
+    
+    //Method for creating the fight between the user and Mr Qin
+    //@param sc the scanner used for input
+    //@param mrQinKilled whether the mrQin is killed or not
+    //@param user the user in the battle
+    //@param inventory the inventory of the user
+    //@param mrQin the enemy the user is fighting
+    //@return mrQinKilled whether the mrQin was killed or not
     private static boolean mrQinFight(Scanner sc, boolean mrQinKilled, Hero user, Inventory inventory, Enemy mrQin)
     {
         System.out.println();
@@ -327,7 +312,14 @@ public class RunGame
         }
         return mrQinKilled;
     }
-
+    
+    //Method for creating the fight between the user and extremely gay Chris
+    //@param sc the scanner used for input
+    //@param extremelyGayChrisKilled whether the extremelyGayChris is killed or not
+    //@param user the user in the battle
+    //@param inventory the inventory of the user
+    //@param extremelyGayChris the enemy the user is fighting
+    //@return extremelyGayChrisKilled whether the extremelyGayChris was killed or not
     private static boolean extremelyGayChristFight(Scanner sc, boolean extremelyGayChrisKilled, Hero user, Inventory inventory, Enemy extremelyGayChris)
     {
         System.out.println();
@@ -412,7 +404,14 @@ public class RunGame
         }
         return extremelyGayChrisKilled;
     }
-
+    
+    //Method for creating the fight between the user and the feral Crystal
+    //@param sc the scanner used for input
+    //@param feralCrystalKilled whether the feral Crystal is killed or not
+    //@param user the user in the battle
+    //@param inventory the inventory of the user
+    //@param feralCrystal the enemy the user is fighting
+    //@return feralCrystalKilled whether the henchman was killed or not
     private static boolean feralCrystalFight(Scanner sc, boolean feralCrystalKilled, Hero user, Inventory inventory, Enemy feralCrystal)
     {
         System.out.println();
@@ -504,7 +503,14 @@ public class RunGame
         }
         return feralCrystalKilled;
     }
-
+    
+    //Method for creating the fight between the user and Henchman
+    //@param sc the scanner used for input
+    //@param henchmanKilled whether the henchman is killed or not
+    //@param user the user in the battle
+    //@param inventory the inventory of the user
+    //@param henchman the enemy the user is fighting
+    //@return henchManKilled whether the henchman was killed or not
     private static boolean henchmenFight(Scanner sc, boolean henchmanKilled, Hero user, Inventory inventory, Enemy henchman)
     {
         System.out.println();
@@ -587,7 +593,10 @@ public class RunGame
         }
         return henchmanKilled;
     }
-
+    
+    //Prints the inventory and prompts user for input
+    //@param user the user that is accessing their inventory
+    //@param inventory the inventory object of that user
     private static void promptUser(Hero user, Inventory inventory)
     {
         System.out.println("Welcome To Your Inventory | Your Current HP is " + user.getHp() + " hp");
@@ -600,7 +609,19 @@ public class RunGame
         System.out.println("If you would like to close your inventory, hit any other key.");
         System.out.println("If you would like to save your game type 's'");
     }
-
+    
+    //Method used for saving the game
+    //@param healthPotions an arraylist of health potions to be saved
+    //@param map the map containing the coordinates of the player to be saved
+    //@param user the hero being saved (hp, name etc)
+    //@param inventory the inventory of the user being saved
+    //@param dagger a weapon containing x and y coordinates on the map to be saved
+    //@param sword a weapon containing x and y coordinates on the map to be saved
+    //@param longsword a weapon containing x and y coordinates on the map to be saved
+    //@param feralCrystal an enemy being saved
+    //@param henchman an enemy being saved
+    //@param mrQin an enemy being saved
+    //@param extremelyGayChris an enemy being saved
     private static void saveGame(ArrayList<Item> healthPotions, MapOfGame map, Hero user, Inventory inventory, Weapon dagger, Weapon sword, Weapon longsword, Enemy feralCrystal, Enemy henchman, Enemy mrQin, Enemy extremelyGayChris) throws IOException
     {
         System.out.println("We're gonna save your game now.");
@@ -620,7 +641,14 @@ public class RunGame
         oos.writeObject(mrQin);
         oos.close();
     }
-
+    
+    //Method for creating the battle between the player and Mr Lu
+    //@param sc the scanner object
+    //@param map the map object
+    //@param user the hero object
+    //@param inventory the inventory object
+    //@param enemy the enemy object
+    //@param input the string to decide which weapon the user selects
     private static void BossBattle(Scanner sc, MapOfGame map, Hero user, Inventory inventory, Enemy mrLu, String input)
     {
         map.movePlayer(input);
@@ -642,7 +670,7 @@ public class RunGame
             damage = 10;
         }
 
-        while (user.getHp() > 0 && mrLu.getHp() > 0)
+        while (user.getHp() >= 0 && mrLu.getHp() >= 0)
         {
 
             user.attack(mrLu, damage);
@@ -701,7 +729,8 @@ public class RunGame
             System.exit(0);
         }
     }
-
+    
+    //Prints the story
     public static void printStory() throws IOException
     {
         System.out.println();
@@ -711,7 +740,8 @@ public class RunGame
         System.out.println("At least they had been, until now");
         System.out.println("What is your name Hero?");
     }
-
+    
+    //Prints the instructions on how to play the game
     public static void printInstructions()
     {
         Scanner temp = new Scanner(System.in);
@@ -737,6 +767,21 @@ public class RunGame
         {
             System.out.println("Don't worry! you'll be fine! Probably...");
             System.out.println();
+        }
+    }
+    
+    //prints an error message if the user trys to enter the castle without a key
+    public static void castleAcessDenied ()
+    {
+        System.out.println("You can't go there without the key!");
+        System.out.println();
+        try
+        {
+            TimeUnit.SECONDS.sleep(1);
+        }
+        catch (InterruptedException e)
+        {
+            e.printStackTrace();
         }
     }
 }
