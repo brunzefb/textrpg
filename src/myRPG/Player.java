@@ -1,8 +1,10 @@
 package myRPG;
 
 import java.io.Serializable;
+import processing.*;
+import processing.core.PApplet;
 
-public class Player implements Serializable
+public class Player extends PApplet 
 {
     private String name;
     private int hp;

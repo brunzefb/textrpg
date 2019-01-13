@@ -1,9 +1,11 @@
 package myRPG;
+import processing.*;
+import processing.core.PApplet;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Inventory implements Serializable
+public class Inventory extends PApplet //implements Serializable
 {
     ArrayList<Item> bag = new ArrayList<Item>();
     private int capacity;

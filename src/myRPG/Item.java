@@ -1,8 +1,10 @@
 package myRPG;
+import processing.*;
+import processing.core.PApplet;
 
 import java.io.Serializable;
 
-public class Item implements Serializable
+public class Item extends PApplet //implements Serializable
 {
     private String name;
     private double weight;

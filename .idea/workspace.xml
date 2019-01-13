@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcc9ddc9-d6b0-4280-80ff-1dff2f72dd8c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/Encounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/Encounter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/MapOfGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/MapOfGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/myRPG/Consumable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/myRPG/MapOfGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/myRPG/MapOfGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/myRPG/RunGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/myRPG/RunGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/myRPG/Consumable.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/myRPG/RunGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/RunGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/myRPG/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/myRPG/Weapon.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,66 +16,34 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-462274740">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/myRPG/RunGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="140" selection-end-column="113" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myRPG/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myRPG/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myRPG/Consumable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myRPG/Encounter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/myRPG/Weapon.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/myRPG/MapOfGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="-178">
               <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
@@ -103,37 +67,34 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1873" />
-    <option name="height" value="1177" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="textrpg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="textrpg" type="462c0819:PsiDirectoryNode" />
+              <item name="myRPG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myRPG" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="textrpg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="textrpg" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="textrpg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="textrpg" type="462c0819:PsiDirectoryNode" />
+              <item name="myRPG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myRPG" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="textrpg" type="b2602c69:ProjectViewProjectNode" />
-              <item name="textrpg" type="462c0819:PsiDirectoryNode" />
+              <item name="myRPG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myRPG" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="myRPG" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -141,7 +102,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -192,13 +152,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1873" height="1177" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18678318" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19288956" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299539" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.050691243" />
@@ -215,54 +177,55 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Maven" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Palette" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/myRPG/RunGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="140" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/myRPG/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="68">
           <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myRPG/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="68">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myRPG/Consumable.java">
+    <entry file="file://$PROJECT_DIR$/src/myRPG/Consumable.java" />
+    <entry file="file://$PROJECT_DIR$/src/myRPG/Weapon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
+        <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myRPG/Encounter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
+        <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/myRPG/Weapon.java">
+    <entry file="file://$PROJECT_DIR$/src/myRPG/RunGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="176">
+          <caret line="137" selection-start-line="137" selection-end-line="137" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/myRPG/MapOfGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="-178">
           <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>

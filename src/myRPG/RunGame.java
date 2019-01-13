@@ -1,13 +1,15 @@
 package myRPG;
-
 import java.io.*;
+import processing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class RunGame
+import processing.core.PApplet;
+
+public class RunGame extends PApplet
 {
-    public static void main(String[] args) throws IOException, ClassNotFoundException
+	public static void main(String[] args) //throws IOException, ClassNotFoundException
     {
         Scanner sc = new Scanner(System.in);
         boolean keyToCastleFound = false;
@@ -28,10 +30,11 @@ public class RunGame
         map.initializeArray();
         System.out.println("What is your name hero?");
         String heroName = sc.nextLine();
-        Hero user = new Hero(heroName);
+        Hero user = new Hero("user");
         Inventory inventory = new Inventory(200);
         Encounter spawnItem = new Encounter();
         Item keyToCastle = new Item("Key", 5.0, spawnItem.getRandomLocation(), spawnItem.getRandomLocation());
+        //prevents key from spawning in the castle 
         if (keyToCastle.getX() == 4 && keyToCastle.getY() == 8)
         {
             keyToCastle.setY(3);
@@ -60,6 +63,8 @@ public class RunGame
         // loads the objects from serialized file
         if (response.equalsIgnoreCase("yes") == true)
         {
+        	/*
+        }
             FileInputStream fin = new FileInputStream("save.ser");
             ObjectInputStream ios = new ObjectInputStream(fin);
             inventory = (Inventory) ios.readObject();
@@ -74,6 +79,7 @@ public class RunGame
             extremelyGayChris = (Enemy) ios.readObject();
             mrQin = (Enemy) ios.readObject();
             fin.close();
+            */
         }
         else if (response.equalsIgnoreCase("no") == true)
         {
@@ -181,7 +187,7 @@ public class RunGame
                 }
                 else if (selection.equalsIgnoreCase("s") == true)
                 {
-                    saveGame(healthPotions, map, user, inventory, Dagger, Sword, Longsword, feralCrystal, Henchman, mrQin, extremelyGayChris);
+                   // saveGame(healthPotions, map, user, inventory, Dagger, Sword, Longsword, feralCrystal, Henchman, mrQin, extremelyGayChris);
                 }
             }
             else
@@ -624,6 +630,8 @@ public class RunGame
     //@param extremelyGayChris an enemy being saved
     private static void saveGame(ArrayList<Item> healthPotions, MapOfGame map, Hero user, Inventory inventory, Weapon dagger, Weapon sword, Weapon longsword, Enemy feralCrystal, Enemy henchman, Enemy mrQin, Enemy extremelyGayChris) throws IOException
     {
+    	
+     /*
         System.out.println("We're gonna save your game now.");
         System.out.println();
         FileOutputStream fout = new FileOutputStream("save.ser");
@@ -640,6 +648,7 @@ public class RunGame
         oos.writeObject(extremelyGayChris);
         oos.writeObject(mrQin);
         oos.close();
+        */
     }
     
     //Method for creating the battle between the player and Mr Lu
@@ -731,7 +740,7 @@ public class RunGame
     }
     
     //Prints the story
-    public static void printStory() throws IOException
+    public static void printStory() //throws IOException
     {
         System.out.println();
         System.out.println("In a world known as Earth 2 Humanity is ruled over by one man.");
@@ -770,7 +779,7 @@ public class RunGame
         }
     }
     
-    //prints an error message if the user trys to enter the castle without a key
+    //prints an error message if the user tries to enter the castle without a key
     public static void castleAcessDenied ()
     {
         System.out.println("You can't go there without the key!");

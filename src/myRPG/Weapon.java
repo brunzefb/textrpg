@@ -1,5 +1,4 @@
 package myRPG;
-
 public class Weapon extends Item
 {
     private int weaponDamage;
